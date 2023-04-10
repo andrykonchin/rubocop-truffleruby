@@ -6,6 +6,6 @@ require_relative 'rubocop/truffleruby'
 require_relative 'rubocop/truffleruby/version'
 require_relative 'rubocop/truffleruby/inject'
 
-RuboCop::Truffleruby::Inject.defaults!
+RuboCop::TruffleRuby::Inject.defaults!
 
 require_relative 'rubocop/cop/truffleruby_cops'

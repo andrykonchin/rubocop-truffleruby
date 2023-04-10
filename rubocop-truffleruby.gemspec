@@ -4,7 +4,7 @@ require_relative "lib/rubocop/truffleruby/version"
 
 Gem::Specification.new do |spec|
   spec.name = "rubocop-truffleruby"
-  spec.version = RuboCop::Truffleruby::VERSION
+  spec.version = RuboCop::TruffleRuby::VERSION
   spec.authors = ["Andrew Konchin"]
   spec.email = ["andry.konchin@gmail.com"]
 
