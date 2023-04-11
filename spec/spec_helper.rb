@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'pry'
 require 'rubocop-truffleruby'
 require 'rubocop/rspec/support'
 
