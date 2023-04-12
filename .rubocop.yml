@@ -1,6 +1,9 @@
 AllCops:
   NewCops: enable
   SuggestExtensions: false
+  # to match required_ruby_version option in the gemspec file and still be able
+  # to run specs against TrufleRuby 22.x that is compatible with Ruby 3.0 only
+  TargetRubyVersion: 3.0
 
 Naming/FileName:
  Exclude:
