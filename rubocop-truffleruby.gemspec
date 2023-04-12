@@ -12,10 +12,11 @@ Gem::Specification.new do |spec|
   spec.description = 'RuboCop extension to enforce TruffleRuby specific linting rules.'
   spec.homepage = 'https://github.com/andrykonchin/rubocop-truffleruby'
   spec.license = 'MIT'
-  spec.required_ruby_version = '>= 2.6.0'
+  spec.required_ruby_version = '>= 3.1.0'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/andrykonchin/rubocop-truffleruby'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
