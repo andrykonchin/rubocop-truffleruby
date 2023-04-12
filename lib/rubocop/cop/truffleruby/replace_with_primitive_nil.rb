@@ -41,9 +41,7 @@ module RuboCop
           add_offense(node) do |corrector|
             source_string = "Primitive.nil?(#{receiver.source})"
 
-            if node.method_name == :!=
-              source_string = "!" + source_string
-            end
+            source_string = '!' + source_string if node.method_name == :!=
 
             corrector.replace(node.loc.expression, source_string)
           end

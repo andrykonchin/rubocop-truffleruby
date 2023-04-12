@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "truffleruby/version"
+require_relative 'truffleruby/version'
 
 module RuboCop
   module TruffleRuby
@@ -13,4 +13,3 @@ module RuboCop
     private_constant(:CONFIG_DEFAULT, :PROJECT_ROOT)
   end
 end
-
