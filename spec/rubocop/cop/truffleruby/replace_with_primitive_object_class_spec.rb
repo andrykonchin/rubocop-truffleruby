@@ -6,17 +6,17 @@ RSpec.describe RuboCop::Cop::TruffleRuby::ReplaceWithPrimitiveObjectClass, :conf
   it 'registers an offense when using `#nil?`' do
     expect_offense(<<~RUBY)
       object.class
-      ^^^^^^^^^^^^ TruffleRuby/ReplaceWithPrimitiveObjectClass: Use `Primitive.object_class` instead of `Object#class`
+      ^^^^^^^^^^^^ TruffleRuby/ReplaceWithPrimitiveObjectClass: Use `Primitive.class` instead of `Object#class`
     RUBY
 
     expect_correction(<<~RUBY)
-      Primitive.object_class(object)
+      Primitive.class(object)
     RUBY
   end
 
-  it 'does not register an offense when using `Primitive.object_class`' do
+  it 'does not register an offense when using `Primitive.class`' do
     expect_no_offenses(<<~RUBY)
-      Primitive.object_class(object)
+      Primitive.class(object)
     RUBY
   end
 end
