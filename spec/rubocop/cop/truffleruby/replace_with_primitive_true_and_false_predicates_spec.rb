@@ -113,6 +113,50 @@ RSpec.describe RuboCop::Cop::TruffleRuby::ReplaceWithPrimitiveTrueAndFalsePredic
     RUBY
   end
 
+  it 'registers an offense when using `Primitive.equal?` with true (at the first position)' do
+    expect_offense(<<~RUBY)
+      Primitive.equal?(true, foo)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^ TruffleRuby/ReplaceWithPrimitiveTrueAndFalsePredicates: Use `Primitive.true?` and `Primitive.false?` instead of `==` or `#equal?`
+    RUBY
+
+    expect_correction(<<~RUBY)
+      Primitive.true?(foo)
+    RUBY
+  end
+
+  it 'registers an offense when using `Primitive.equal?` with true (at the last position)' do
+    expect_offense(<<~RUBY)
+      Primitive.equal?(foo, true)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^ TruffleRuby/ReplaceWithPrimitiveTrueAndFalsePredicates: Use `Primitive.true?` and `Primitive.false?` instead of `==` or `#equal?`
+    RUBY
+
+    expect_correction(<<~RUBY)
+      Primitive.true?(foo)
+    RUBY
+  end
+
+  it 'registers an offense when using `Primitive.equal?` with false (at the first position)' do
+    expect_offense(<<~RUBY)
+      Primitive.equal?(false, foo)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ TruffleRuby/ReplaceWithPrimitiveTrueAndFalsePredicates: Use `Primitive.true?` and `Primitive.false?` instead of `==` or `#equal?`
+    RUBY
+
+    expect_correction(<<~RUBY)
+      Primitive.false?(foo)
+    RUBY
+  end
+
+  it 'registers an offense when using `Primitive.equal?` with false (at the last position)' do
+    expect_offense(<<~RUBY)
+      Primitive.equal?(foo, false)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ TruffleRuby/ReplaceWithPrimitiveTrueAndFalsePredicates: Use `Primitive.true?` and `Primitive.false?` instead of `==` or `#equal?`
+    RUBY
+
+    expect_correction(<<~RUBY)
+      Primitive.false?(foo)
+    RUBY
+  end
+
   it 'does not register an offense when using `Primitive.true?(foo)`' do
     expect_no_offenses(<<~RUBY)
       Primitive.true?(foo)
@@ -122,6 +166,12 @@ RSpec.describe RuboCop::Cop::TruffleRuby::ReplaceWithPrimitiveTrueAndFalsePredic
   it 'does not register an offense when using `Primitive.false?(foo)`' do
     expect_no_offenses(<<~RUBY)
       Primitive.false?(foo)
+    RUBY
+  end
+
+  it 'does not register an offense when using `Primitive.equal?` with arguments other than true/false' do
+    expect_no_offenses(<<~RUBY)
+      Primitive.equal?(foo, bar)
     RUBY
   end
 end
