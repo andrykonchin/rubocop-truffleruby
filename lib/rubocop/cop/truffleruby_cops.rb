@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'truffleruby/replace_with_primitive_class'
+require_relative 'truffleruby/replace_with_primitive_equal'
+require_relative 'truffleruby/replace_with_primitive_is_a'
 require_relative 'truffleruby/replace_with_primitive_nil'
-require_relative 'truffleruby/replace_with_primitive_object_class'
-require_relative 'truffleruby/replace_with_primitive_object_equal'
-require_relative 'truffleruby/replace_with_primitive_object_kind_of'
 require_relative 'truffleruby/replace_with_primitive_true_and_false_predicates'

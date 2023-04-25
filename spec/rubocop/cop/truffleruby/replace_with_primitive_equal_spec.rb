@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::TruffleRuby::ReplaceWithPrimitiveObjectEqual, :config do
+RSpec.describe RuboCop::Cop::TruffleRuby::ReplaceWithPrimitiveEqual, :config do
   let(:config) { RuboCop::Config.new }
 
   it 'registers an offense when using `#equal?`' do
     expect_offense(<<~RUBY)
       foo.equal?(bar)
-      ^^^^^^^^^^^^^^^ TruffleRuby/ReplaceWithPrimitiveObjectEqual: Use `Primitive.equal?` instead of `#equal?`
+      ^^^^^^^^^^^^^^^ TruffleRuby/ReplaceWithPrimitiveEqual: Use `Primitive.equal?` instead of `#equal?`
     RUBY
 
     expect_correction(<<~RUBY)
@@ -17,7 +17,7 @@ RSpec.describe RuboCop::Cop::TruffleRuby::ReplaceWithPrimitiveObjectEqual, :conf
   it 'registers an offense when using `#equal?` without explicit receiver' do
     expect_offense(<<~RUBY)
       equal?(bar)
-      ^^^^^^^^^^^ TruffleRuby/ReplaceWithPrimitiveObjectEqual: Use `Primitive.equal?` instead of `#equal?`
+      ^^^^^^^^^^^ TruffleRuby/ReplaceWithPrimitiveEqual: Use `Primitive.equal?` instead of `#equal?`
     RUBY
 
     expect_correction(<<~RUBY)
